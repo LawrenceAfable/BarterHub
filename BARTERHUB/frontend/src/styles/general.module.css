@@ -1,0 +1,30 @@
+/* general-status.module.css */
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  display: inline-block;
+}
+
+.active {
+  background-color: #e0f7fa;
+  color: #00796b;
+}
+
+.matched {
+  background-color: #fff3e0;
+  color: #ef6c00;
+}
+
+.traded {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+/* Default or unknown status */
+.unknown {
+  background-color: #f0f0f0;
+  color: #666;
+}

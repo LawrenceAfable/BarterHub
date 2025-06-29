@@ -1,0 +1,17 @@
+
+.homePage {
+  padding: 20px;
+}
+
+.hpHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.hpHeader h3, 
+.hpIcon {
+  color: var(--text-color);
+  font-size: var(--font-size-h3)
+}

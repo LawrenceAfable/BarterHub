@@ -1,0 +1,132 @@
+.cardItemCont {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+  padding: 20px;
+}
+
+.cardItemCont:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+  padding: 1rem;
+}
+
+.cardDetailsCont {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTop {
+  overflow: hidden;
+}
+
+.cardTop img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.cardTop:hover img {
+  transform: scale(1.05);
+}
+
+.cardBot {
+  padding: 1rem 0;
+}
+
+.cardTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.cardDescription {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.cardOwner {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.cardOwnerName {
+  font-weight: bold;
+}
+
+.cardOwnerLocation {
+  color: #999;
+}
+
+/* CardAction section */
+.cardAction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.cardDelete,
+.cardEdit{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-h3);
+}
+
+/* Decline */
+.cardDelete {
+  background-color: #fff1f0;
+  color: var(--decline-color);
+  border: 1px solid #ffccc7;
+}
+
+.cardDelete:hover {
+  background-color: var(--decline-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.cardDelete:active {
+  transform: scale(0.95);
+}
+
+/* Offer */
+.cardEdit {
+  background-color: #f6ffed;
+  color: var(--offer-color);
+  border: 1px solid #b7eb8f;
+}
+
+.cardEdit:hover {
+  background-color: var(--offer-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.cardEdit:active {
+  transform: scale(0.95);
+}
+
+/* Heart icon when active/filled */
+.cardEdit.active i {
+  font-weight: 900; /* Makes it solid */
+}
+

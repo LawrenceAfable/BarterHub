@@ -1,0 +1,27 @@
+.notificationPage {
+  padding: 20px;
+}
+
+.npHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.npHeader h3,
+.npIcon {
+  color: var(--text-color);
+  font-size: var(--font-size-h3);
+}
+
+.npClearNotif {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
+
+.npClearNotif i {
+  color: var(--error-color);
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+.ulPageWrapper {
+  display: flex;
+}
+
+.ulSection {
+  flex: 2;
+  /* height: 100vh; */
+}
+
+.contentSection {
+  flex: 3;
+  overflow-x: hidden;
+  /* background-color: var(--bg1-color); */
+}
+
+.xSection {
+  flex: 2;
+  border: var(--border-bottom);
+  /* height: 100vh; */
+}
+
+@media (max-width: 1024px) {
+  .ulSection {
+    flex: 0.5;
+  }
+
+  .contentSection {
+    flex: 3;
+    width: 100%;
+  }
+
+  .xSection {
+    display: none;
+    border: none;
+  }
+}
