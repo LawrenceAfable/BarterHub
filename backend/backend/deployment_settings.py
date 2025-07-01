@@ -3,20 +3,22 @@ import dj_database_url
 from .settings import *
 from .settings import BASE_DIR
 
-# Dynamically set ALLOWED_HOSTS
+# Dynamically set ALLOWED_HOSTS based on Render's environment variable
 ALLOWED_HOSTS = [os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'your-default-domain.com')]
+
+# CSRF trusted origins for your domain
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ.get('RENDER_EXTERNAL_HOSTNAME', 'your-default-domain.com')]
 
-# Django's debug mode should be turned off in production
+# Set DEBUG to False for production
 DEBUG = False
 
-# Ensure that your SECRET_KEY is properly set in Render
-SECRET_KEY = os.environ.get('SECRET_KEY')
+# Ensure your SECRET_KEY is set securely for production
+SECRET_KEY = os.environ.get('SECRET_KEY', 'your-default-secret-key')
 
-# Add the missing comma in the middleware list
+# Add proper middleware for static files and security
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # <-- Fix: add missing comma here
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Middleware for serving static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -24,18 +26,30 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware',  # This is repeated, remove if unnecessary
 ]
 
-# Static files settings for Whitenoise
+# Static files configuration for Whitenoise (production setup)
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Database settings (assuming DATABASE_URL is set in Render environment)
+# This helps collect static files into a specific directory
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# Database settings (DATABASE_URL is set in Render environment)
 DATABASES = {
-  'default': dj_database_url.config(
-    default=os.environ.get('DATABASE_URL'),
-    conn_max_age=600
-  )
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
+
+# Ensure you're using the correct ASGI/WGI setup for deployment:
+# Set up your app for both WSGI and ASGI. The application can be exposed either via WSGI or ASGI depending on the deployment method (ASGI for modern async deployments like Gunicorn with Uvicorn workers).
+
+# If you are deploying with ASGI (for async support, with Gunicorn + Uvicorn):
+# Make sure your ASGI config is correctly pointed to `backend.asgi:application`
+# For example, in your `asgi.py` file:
+# application = get_asgi_application()
+
