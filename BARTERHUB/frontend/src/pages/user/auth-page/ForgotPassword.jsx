@@ -46,28 +46,6 @@ function ForgotPassword() {
     }
   };
 
-  // <div>
-  //   <h2>Forgot Password</h2>
-  //   <p>Enter your email address, and we'll send you a new password.</p>
-
-  //   <form onSubmit={handleSubmit} className={styles.fpForm}>
-  //     <input
-  //       type="email"
-  //       placeholder="Your email"
-  //       value={email}
-  //       onChange={handleEmailChange}
-  //       className={styles.fpEMail}
-  //       required
-  //     />
-  //     <button type="submit" disabled={loading} className={styles.fpButton}>
-  //       {loading ? "Sending..." : "Send New Password"}
-  //     </button>
-  //   </form>
-
-  //   {message && <p style={{ color: "green" }}>{message}</p>}
-  //   {error && <p style={{ color: "red" }}>{error}</p>}
-  // </div>;
-
   return (
     <main className={styles.pageWrapper}>
       <div className={styles.animatedBackground}>

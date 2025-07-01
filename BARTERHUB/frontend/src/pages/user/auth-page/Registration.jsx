@@ -18,6 +18,7 @@ export default function Registration() {
   const [error, setError] = useState("");
   const [otpSent, setOtpSent] = useState(false); // To track if OTP has been sent
   const [isVerified, setIsVerified] = useState(false); // To track if OTP is verified
+  const [isAgreedToTerms, setIsAgreedToTerms] = useState(false); // New state for terms and conditions checkbox
 
   const handleChange = (e) => {
     setFormData({
@@ -26,10 +27,13 @@ export default function Registration() {
     });
   };
 
+  const handleTermsChange = (e) => {
+    setIsAgreedToTerms(e.target.checked); // Update the checkbox state
+  };
+
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const sendOtp = async () => {
-    // Send OTP request to backend API
     setLoading(true);
     try {
       const response = await fetch(import.meta.env.VITE_SEND_OTP_API, {
@@ -50,7 +54,7 @@ export default function Registration() {
         return;
       }
 
-      setOtpSent(true); // Mark OTP as sent
+      setOtpSent(true);
       alert("OTP sent! Please check your email.");
       setLoading(false);
     } catch (err) {
@@ -61,7 +65,6 @@ export default function Registration() {
   };
 
   const verifyOtp = async () => {
-    // Verify OTP entered by the user
     setLoading(true);
     try {
       const response = await fetch(import.meta.env.VITE_VERIFY_OTP_API, {
@@ -83,7 +86,7 @@ export default function Registration() {
         return;
       }
 
-      setIsVerified(true); // Mark OTP as verified
+      setIsVerified(true);
       alert("OTP verified successfully!");
       setLoading(false);
     } catch (err) {
@@ -114,6 +117,11 @@ export default function Registration() {
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
+      return;
+    }
+
+    if (!isAgreedToTerms) {
+      setError("You must agree to the terms and conditions to register.");
       return;
     }
 
@@ -169,7 +177,6 @@ export default function Registration() {
 
         <form onSubmit={handleSubmit} className={styles.form}>
           {!otpSent ? (
-            // Step 1: Enter email and send OTP
             <>
               <label>
                 Email
@@ -187,7 +194,9 @@ export default function Registration() {
                 type="button"
                 onClick={sendOtp}
                 disabled={loading}
-                className={loading ? styles.buttonLoading : ""}
+                className={`${styles.loginButton} ${
+                  loading ? styles.buttonLoading : ""
+                }`}
               >
                 {loading ? (
                   <>
@@ -200,7 +209,6 @@ export default function Registration() {
               </button>
             </>
           ) : !isVerified ? (
-            // Step 2: Enter OTP to verify
             <>
               <label>
                 OTP
@@ -213,12 +221,14 @@ export default function Registration() {
                   required
                 />
               </label>
-              
+
               <button
                 type="button"
                 onClick={verifyOtp}
                 disabled={loading}
-                className={loading ? styles.buttonLoading : ""}
+                className={`${styles.loginButton} ${
+                  loading ? styles.buttonLoading : ""
+                }`}
               >
                 {loading ? (
                   <>
@@ -231,7 +241,6 @@ export default function Registration() {
               </button>
             </>
           ) : (
-            // Step 3: Enter user details and register
             <>
               <label>
                 Username
@@ -281,7 +290,28 @@ export default function Registration() {
                 />
               </label>
 
-              <button type="submit" disabled={loading}>
+              {/* Terms and Conditions checkbox */}
+              <label className={styles.checkboxLabel}>
+                <input
+                  type="checkbox"
+                  name="terms"
+                  checked={isAgreedToTerms}
+                  onChange={handleTermsChange}
+                  required
+                />
+                I agree to the{" "}
+                <a href="/terms" target="_blank" rel="noopener noreferrer">
+                  Terms and Conditions
+                </a>
+              </label>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className={`${styles.loginButton} ${
+                  loading ? styles.buttonLoading : ""
+                }`}
+              >
                 {loading ? "Registering..." : "Register"}
               </button>
             </>

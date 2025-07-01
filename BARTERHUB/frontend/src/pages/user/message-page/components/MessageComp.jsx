@@ -25,7 +25,7 @@ export default function MessageComp() {
         matchData.sort((a, b) => {
           const lastMessageA = a.messages?.length > 0 ? new Date(a.messages[a.messages.length - 1].created_at) : new Date(a.created_at);
           const lastMessageB = b.messages?.length > 0 ? new Date(b.messages[b.messages.length - 1].created_at) : new Date(b.created_at);
-          
+
           return lastMessageB - lastMessageA; // Sort in descending order
         });
 
@@ -36,9 +36,24 @@ export default function MessageComp() {
       });
   }, []);
 
+  // Check if the conversation already exists with this other user (avoid multiple instances)
+  const getMatchId = (user1, user2) => {
+    return user1.id === currentUser.id ? user2.id : user1.id;
+  };
+
+  const conversationMap = {};
+
   return matches.map((match) => {
-    const otherUser =
-      match.user1.id === currentUser.id ? match.user2 : match.user1;
+    const otherUser = match.user1.id === currentUser.id ? match.user2 : match.user1;
+    const otherUserId = getMatchId(match.user1, match.user2);
+
+    // Check if the conversation with this other user already exists
+    if (conversationMap[otherUserId]) {
+      return null; // Skip rendering this match if it's already rendered
+    }
+
+    // Store this conversation to avoid multiple renders for the same user
+    conversationMap[otherUserId] = true;
 
     // Get the most recent message's created_at date
     const lastMessageDate = match.messages?.length > 0

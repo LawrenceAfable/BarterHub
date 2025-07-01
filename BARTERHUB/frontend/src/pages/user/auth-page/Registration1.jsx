@@ -11,10 +11,13 @@ export default function Registration() {
     email: "",
     password: "",
     confirmPassword: "",
+    otp: "", // New state for OTP
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [otpSent, setOtpSent] = useState(false); // To track if OTP has been sent
+  const [isVerified, setIsVerified] = useState(false); // To track if OTP is verified
 
   const handleChange = (e) => {
     setFormData({
@@ -23,12 +26,81 @@ export default function Registration() {
     });
   };
 
-  const validateEmail = (email) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const sendOtp = async () => {
+    // Send OTP request to backend API
+    setLoading(true);
+    try {
+      const response = await fetch(import.meta.env.VITE_SEND_OTP_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data?.error || "Failed to send OTP.");
+        setLoading(false);
+        return;
+      }
+
+      setOtpSent(true); // Mark OTP as sent
+      alert("OTP sent! Please check your email.");
+      setLoading(false);
+    } catch (err) {
+      console.error("Error sending OTP:", err);
+      setError("Something went wrong while sending OTP.");
+      setLoading(false);
+    }
+  };
+
+  const verifyOtp = async () => {
+    // Verify OTP entered by the user
+    setLoading(true);
+    try {
+      const response = await fetch(import.meta.env.VITE_VERIFY_OTP_API, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          otp: formData.otp,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data?.error || "Invalid OTP.");
+        setLoading(false);
+        return;
+      }
+
+      setIsVerified(true); // Mark OTP as verified
+      alert("OTP verified successfully!");
+      setLoading(false);
+    } catch (err) {
+      console.error("Error verifying OTP:", err);
+      setError("Something went wrong while verifying OTP.");
+      setLoading(false);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
+    if (!isVerified) {
+      setError("Please verify the OTP before registering.");
+      return;
+    }
 
     if (!validateEmail(formData.email)) {
       setError("Please enter a valid email address.");
@@ -96,74 +168,133 @@ export default function Registration() {
         {error && <div className={styles.error}>{error}</div>}
 
         <form onSubmit={handleSubmit} className={styles.form}>
-          <label>
-            Username
-            <input
-              type="text"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="Enter your username"
-              required
-            />
-          </label>
+          {!otpSent ? (
+            // Step 1: Enter email and send OTP
+            <>
+              <label>
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your email"
+                  required
+                />
+              </label>
 
-          <label>
-            Full Name
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              required
-            />
-          </label>
+              <button
+                type="button"
+                onClick={sendOtp}
+                disabled={loading}
+                className={`${styles.loginButton} ${
+                  loading ? styles.buttonLoading : ""
+                }`}
+              >
+                {loading ? (
+                  <>
+                    <div className={styles.spinner}></div>
+                    Sending...
+                  </>
+                ) : (
+                  "Send OTP"
+                )}
+              </button>
+            </>
+          ) : !isVerified ? (
+            // Step 2: Enter OTP to verify
+            <>
+              <label>
+                OTP
+                <input
+                  type="text"
+                  name="otp"
+                  value={formData.otp}
+                  onChange={handleChange}
+                  placeholder="Enter OTP"
+                  required
+                />
+              </label>
 
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-            />
-          </label>
+              <button
+                type="button"
+                onClick={verifyOtp}
+                disabled={loading}
+                className={`${styles.loginButton} ${
+                  loading ? styles.buttonLoading : ""
+                }`}
+              >
+                {loading ? (
+                  <>
+                    <div className={styles.spinner}></div>
+                    Verifying...
+                  </>
+                ) : (
+                  "Verify OTP"
+                )}
+              </button>
+            </>
+          ) : (
+            // Step 3: Enter user details and register
+            <>
+              <label>
+                Username
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleChange}
+                  placeholder="Enter your username"
+                  required
+                />
+              </label>
 
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              required
-            />
-          </label>
+              <label>
+                Full Name
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter your name"
+                  required
+                />
+              </label>
 
-          <label>
-            Confirm Password
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="••••••••"
-              required
-            />
-          </label>
+              <label>
+                Password
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="••••••••"
+                  required
+                />
+              </label>
 
-          <button type="submit" disabled={loading}>
-            {loading ? "Registering..." : "Register"}
-          </button>
+              <label>
+                Confirm Password
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  placeholder="••••••••"
+                  required
+                />
+              </label>
+
+              <button type="submit" disabled={loading}>
+                {loading ? "Registering..." : "Register"}
+              </button>
+            </>
+          )}
         </form>
 
         <div className={styles.footerText}>
           Already have an account?{" "}
-          <span onClick={() => navigate("/")}>Login here</span>
+          <span onClick={() => navigate("/login")}>Login here</span>
         </div>
       </section>
     </main>

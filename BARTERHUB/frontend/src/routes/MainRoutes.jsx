@@ -14,6 +14,7 @@ import Notification from "../pages/user/notif-page/Notification";
 import Message from "../pages/user/message-page/Message";
 import MessageDetail from "../pages/user/message-page/MessageDetail";
 import ForgotPassword from "../pages/user/auth-page/ForgotPassword";
+import Terms from "../pages/user/terms-page/Terms";
 
 import Test from "../components/ui/Test";
 // test
@@ -37,6 +38,7 @@ export default function MainRoutes() {
       <Route path="/messages" element={<Message />} />
       {/* <Route path="/message-detail" element={<MessageDetail />} /> */}
       <Route path="/message-detail/:matchId" element={<MessageDetail />} />
+      <Route path="/terms" element={<Terms />} />
 
       {/* test */}
       <Route path="/test" element={<Test />} />

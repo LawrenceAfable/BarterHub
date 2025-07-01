@@ -9,6 +9,12 @@
   margin-bottom: 20px;
 }
 
+.mHeader h3 {
+  margin: 0; /* Removes default margin from h3 */
+  font-size: var(--font-size-h3);
+}
+
+
 .mHeader h3,
 .mIcon {
   color: var(--text-color);

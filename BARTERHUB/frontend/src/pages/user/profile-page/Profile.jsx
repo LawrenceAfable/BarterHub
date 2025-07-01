@@ -27,6 +27,9 @@ export default function Profile() {
   const { userData, loadingUser, setUserData } = useUserProfile();
   const { items, loadingItems, setItems } = useUserItems();
 
+  // Inside Profile component
+  const [selectedTab, setSelectedTab] = useState("All");
+
   // Ratings
   const { ratingData, loading: loadingRating } = useUserRating(userData?.id);
 
@@ -132,16 +135,56 @@ export default function Profile() {
         </div>
         <div className={styles.pItemListed}>
           <h3>My Listings</h3>
+          <div className={styles.filterTabs}>
+            <div
+              className={`${styles.tab} ${
+                selectedTab === "All" ? styles.activeTab : ""
+              }`}
+              onClick={() => setSelectedTab("All")}
+            >
+              All
+            </div>
+            <div
+              className={`${styles.tab} ${
+                selectedTab === "Active" ? styles.activeTab : ""
+              }`}
+              onClick={() => setSelectedTab("Active")}
+            >
+              Active
+            </div>
+            <div
+              className={`${styles.tab} ${
+                selectedTab === "Matched" ? styles.activeTab : ""
+              }`}
+              onClick={() => setSelectedTab("Matched")}
+            >
+              Matched
+            </div>
+            <div
+              className={`${styles.tab} ${
+                selectedTab === "Traded" ? styles.activeTab : ""
+              }`}
+              onClick={() => setSelectedTab("Traded")}
+            >
+              Traded
+            </div>
+          </div>
           <div className={styles.itemCont}>
             {items.length > 0 ? (
-              items.map((item) => (
-                <MyListedCardItem
-                  key={item.id}
-                  item={item}
-                  onEdit={() => handleEditItem(item)}
-                  onDelete={() => handleDeleteItem(item.id)}
-                />
-              ))
+              items
+                .filter(
+                  (item) =>
+                    selectedTab === "All" ||
+                    item.status.toLowerCase() === selectedTab.toLowerCase()
+                )
+                .map((item) => (
+                  <MyListedCardItem
+                    key={item.id}
+                    item={item}
+                    onEdit={() => handleEditItem(item)}
+                    onDelete={() => handleDeleteItem(item.id)}
+                  />
+                ))
             ) : (
               <p>No items found.</p>
             )}

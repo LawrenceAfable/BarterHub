@@ -9,6 +9,12 @@
   margin-bottom: 20px;
 }
 
+.npHeader h3 {
+  margin: 0; /* Removes default margin from h3 */
+  font-size: var(--font-size-h3);
+}
+
+
 .npHeader h3,
 .npIcon {
   color: var(--text-color);

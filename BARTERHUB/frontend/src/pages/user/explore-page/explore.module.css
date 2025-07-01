@@ -9,6 +9,12 @@
   margin-bottom: 20px;
 }
 
+.xpHeader h3 {
+  margin: 0; /* Removes default margin from h3 */
+  font-size: var(--font-size-h3);
+}
+
+
 .xpHeader h3,
 .xpIcon {
   color: var(--text-color);

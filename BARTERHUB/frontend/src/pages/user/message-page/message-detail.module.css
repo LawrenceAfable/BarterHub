@@ -1,5 +1,4 @@
-/* message-detail.module.css */
-
+/* 1. Page Wrapper */
 .messagePage {
   max-width: 600px;
   margin: 0 auto;
@@ -7,12 +6,13 @@
   display: flex;
   flex-direction: column;
   background: #f5f7fa;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgb(0 0 0 / 0.1);
   overflow: hidden;
 }
 
+/* 2. Header */
 .mpHeader {
   background-color: #4a90e2;
   color: white;
@@ -32,6 +32,7 @@
   font-size: 1.5rem;
 }
 
+/* 3. Message Body */
 .mBody {
   flex: 1;
   display: flex;
@@ -41,6 +42,7 @@
   overflow: hidden; /* prevent children overflow */
 }
 
+/* 4. Chat Header */
 .chatHeader {
   display: flex;
   align-items: center;
@@ -67,16 +69,42 @@
   color: #333;
 }
 
-/* trade message */
+/* 5. Trade Message Status */
 .completeTradeStatus {
   margin-top: 5px;
   padding: 10px;
   color: var(--bg1-color);
   font-weight: 500;
   border-radius: 8px;
-  background-color: var(--accent-color);
+  /* background-color: var(--accent-color); */
 }
 
+.completeTradeBtn {
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: var(--bg1-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.completeTradeBtn:hover {
+  background-color: var(--accent-color);
+  box-shadow: var(--box-shadow-medium);
+}
+
+.completeTradeStatus {
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 6. Chat Body */
 .chatBody {
   flex: 1;
   overflow-y: auto;
@@ -87,7 +115,7 @@
   scroll-behavior: smooth;
 }
 
-/* Scrollbar styling */
+/* Scrollbar Styling */
 .chatBody::-webkit-scrollbar {
   width: 6px;
 }
@@ -97,7 +125,7 @@
   border-radius: 3px;
 }
 
-/* Message bubbles */
+/* 7. Message Bubbles */
 .messageBubble {
   max-width: 60%;
   padding: 10px;
@@ -107,10 +135,10 @@
   word-wrap: break-word;
   font-size: 0.95rem;
   line-height: 1.3;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* Incoming messages */
+/* 8. Incoming Message Styles */
 .incoming {
   background-color: #f1f0f0;
   color: #222;
@@ -118,7 +146,7 @@
   border-top-left-radius: 0;
 }
 
-/* Outgoing messages */
+/* 9. Outgoing Message Styles */
 .outgoing {
   background-color: #dcf8c6;
   color: #333;
@@ -126,7 +154,7 @@
   border-top-right-radius: 0;
 }
 
-/* Sender info for incoming messages */
+/* 10. Sender Information (for incoming messages) */
 .senderInfo {
   display: flex;
   align-items: center;
@@ -150,7 +178,7 @@
   white-space: pre-wrap;
 }
 
-/* Chat input area */
+/* 11. Chat Input Area */
 .chatInput {
   display: flex;
   gap: 0.5rem;
@@ -192,7 +220,7 @@
   background-color: #3b74c2;
 }
 
-/* Inline rating section */
+/* 12. Rating Section */
 .ratingInline {
   margin-top: 10px;
   text-align: left;
@@ -205,7 +233,7 @@
   color: #333;
 }
 
-/* Star container */
+/* 13. Star Container (for rating) */
 .stars {
   display: inline-flex;
   gap: 6px;
@@ -213,7 +241,7 @@
   user-select: none;
 }
 
-/* Each star */
+/* 14. Each Star */
 .stars span {
   font-size: 28px;
   color: #ccc;
@@ -221,12 +249,12 @@
   transition: color 0.2s ease;
 }
 
-/* Filled (selected) stars */
+/* 15. Filled (selected) Stars */
 .filled {
   color: gold;
 }
 
-/* Submit rating button */
+/* 16. Submit Rating Button */
 .submitRatingBtn {
   padding: 0.5rem 1rem;
   background-color: #4caf50;
@@ -242,4 +270,3 @@
 .submitRatingBtn:hover {
   background-color: #43a047;
 }
-

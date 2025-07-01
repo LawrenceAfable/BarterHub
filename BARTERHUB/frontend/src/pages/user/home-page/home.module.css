@@ -10,6 +10,11 @@
   margin-bottom: 20px;
 }
 
+.hpHeader h3 {
+  margin: 0; /* Removes default margin from h3 */
+  font-size: var(--font-size-h3);
+}
+
 .hpHeader h3, 
 .hpIcon {
   color: var(--text-color);

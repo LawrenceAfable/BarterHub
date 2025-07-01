@@ -166,7 +166,35 @@ input:focus {
   animation: spin 2s linear infinite;
 }
 
-/* Animation for the spinner */
+/* terms */
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-align: left;
+  gap: 5px;
+  flex-direction: row;
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.checkboxLabel a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.checkboxLabel a:hover {
+  text-decoration: underline;
+}
+
+/* Animation for the  spinner */
 @keyframes spin {
   0% {
     transform: rotate(0deg);

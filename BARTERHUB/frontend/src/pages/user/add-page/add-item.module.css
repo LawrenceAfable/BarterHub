@@ -10,6 +10,12 @@
   margin-bottom: 20px;
 }
 
+.aiHeader h3 {
+  margin: 0; /* Removes default margin from h3 */
+  font-size: var(--font-size-h3);
+}
+
+
 .aiHeader h3,
 .aiIcon {
   color: var(--text-color);
