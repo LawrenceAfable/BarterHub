@@ -1,0 +1,73 @@
+/* link */
+.messageLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.messageCompCont {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: var(--border-very-light-gray);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.messageCompCont:hover {
+  background-color: var(--bg-color);
+}
+
+.mcImageCont {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.mcImageCont img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mcDetailCont {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mcTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.mcName {
+  font-weight: 600;
+  font-size: var(--font-size-body);
+  color: var(--text-color);
+}
+
+.mcDate {
+  font-size: var(--font-size-small);
+  color: var(--label-color);
+  white-space: nowrap;
+}
+
+.mcBot {
+  overflow: hidden;
+}
+
+.mcMessageContent {
+  font-size: var(--font-size-small);
+  color: var(--label-color);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,74 @@
+.explorePage {
+  padding: 20px;
+}
+
+.xpHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.xpHeader h3 {
+  margin: 0; /* Removes default margin from h3 */
+  font-size: var(--font-size-h3);
+}
+
+
+.xpHeader h3,
+.xpIcon {
+  color: var(--text-color);
+  font-size: var(--font-size-h3);
+}
+
+/* card list wrapper */
+.cardListWrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-snap-type: x mandatory;
+  margin-bottom: 40px;
+}
+
+.cardListWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cardListWrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.cardListWrapper > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+/* Trade Suggestion */
+.xpTradeSuggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.trWrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-snap-type: x mandatory;
+  margin-bottom: 40px;
+}
+
+.trWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.trWrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.trWrapper > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}

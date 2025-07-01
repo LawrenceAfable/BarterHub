@@ -1,0 +1,248 @@
+/* main page */
+.addItemPage {
+  padding: 20px;
+}
+
+.aiHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.aiHeader h3 {
+  margin: 0; /* Removes default margin from h3 */
+  font-size: var(--font-size-h3);
+}
+
+
+.aiHeader h3,
+.aiIcon {
+  color: var(--text-color);
+  font-size: var(--font-size-h3);
+}
+
+/* ai Body */
+.aiBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.aiItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aiTitle {
+  color: var(--text-color);
+  font-size: var(--font-size-h5);
+  font-weight: 600;
+}
+
+/* aiBody - upload images */
+.aiImage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--bg1-color);
+  color: var(--text-color);
+  width: 100%;
+  height: 120px;
+  border-radius: 4px;
+  border: var(--border-bottom);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.aiImage:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.aiImage span {
+  font-size: var(--font-size-small);
+}
+
+.previewContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+}
+
+.previewWrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.removeButton {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1;
+  /* transform: translate(50%, -50%); */
+}
+
+.aiItem input[type="text"] {
+  border: none;
+  border: var(--border-bottom);
+  background-color: var(--bg1-color);
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.aiItem input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: var(--bg1-color);
+}
+
+.aiItem input[type="text"]:hover {
+  border-color: var(--accent-color);
+}
+
+.aiItem textarea {
+  border: none;
+  border-radius: 4px;
+  border: var(--border-bottom);
+  background-color: var(--bg1-color);
+  width: 100%;
+  padding: 10px;
+  resize: none;
+  transition: border 0.2s ease;
+  min-height: 120px;
+}
+
+.aiItem textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background-color: var(--bg1-color);
+}
+
+.categoryList {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.categoryItem {
+  padding: 8px 16px;
+  background-color: var(--bg1-color);
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.categoryItem:hover {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  border-color: var(--accent-color);
+}
+
+.aiButton {
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: var(--accent-color);
+  color: var(--background-color);
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.aiButton:hover {
+  background-color: var(--accent-color-hover);
+}
+
+/* added */
+.checkboxList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.checkboxLabel input {
+  width: 14px; 
+  height: 14px;
+  accent-color: var(--accent-color); 
+}
+
+.checkboxLabel input:focus-visible {
+  outline: none;
+  border: 2px solid #4caf50;
+}
+
+.aiCategoryName {
+  margin-right: 10px;
+}
+
+.selectedCategory {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 4px 8px;
+  /* padding: 0 8px; */
+  margin: 4px;
+  font-size: var(--base-font-size);
+  color: var(--background-color);
+  background-color: var(--accent-color);
+}
+
+.removeCategoryButton {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  margin-left: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.removeCategoryButton:hover {
+  color: #d00;
+}
+
+.selectedCategories {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.removeCategory {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #ff4444;
+  cursor: pointer;
+}

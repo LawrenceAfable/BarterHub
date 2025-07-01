@@ -1,0 +1,43 @@
+/* .messagePage {
+  padding: 20px;
+}
+
+.mpHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.mpHeader h3,
+.mpIcon {
+  color: var(--text-color);
+  font-size: var(--font-size-h3);
+} */
+
+/* ==== TRY ==== */
+.messagePage {
+  padding: 20px;
+}
+
+.mpHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: var(--border-very-light-gray);
+  /* background-color: var(--bg-color); */
+}
+
+.mpHeader h3 {
+  font-size: var(--font-size-h5);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.mpIcon i {
+  font-size: 1.2rem;
+  color: var(--mid-tone-color);
+  cursor: pointer;
+}
+/* ==== TRY ==== */

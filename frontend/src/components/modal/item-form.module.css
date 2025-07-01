@@ -1,0 +1,192 @@
+/* item-form.module.css */
+
+/* Modal Overlay */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Form Container */
+.formContainer {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Image Upload Section */
+.imageUploadSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.uploadLabel {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.uploadLabel:hover {
+  background-color: #45a049;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.imagePreviewGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.imageThumb {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+}
+
+.imageThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.removeBtn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.removeBtn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Label for Inputs */
+.inputLabel {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Input Fields */
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Categories Section */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.categoryOption {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.categoryOption input {
+  margin-right: 10px;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submitBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: #45a049;
+}
+
+.cancelBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.cancelBtn:hover {
+  background-color: #e53935;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* General Styling */
+textarea {
+  resize: none;
+  height: 150px;
+}

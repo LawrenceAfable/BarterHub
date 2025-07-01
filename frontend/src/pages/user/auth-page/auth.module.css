@@ -1,0 +1,233 @@
+.pageWrapper {
+  position: relative;
+  min-height: 100vh;
+  /* background: linear-gradient(to right, #141e30, #243b55); */
+  background: linear-gradient(to right, #2ec4b6, #0f6674);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.animatedBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  filter: blur(3px);
+  animation: float 10s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+  width: 200px;
+  height: 200px;
+  left: 10%;
+  top: 20%;
+}
+
+.circle:nth-child(2) {
+  width: 300px;
+  height: 300px;
+  left: 60%;
+  top: 40%;
+  animation-delay: 2s;
+}
+
+.circle:nth-child(3) {
+  width: 150px;
+  height: 150px;
+  left: 40%;
+  top: 80%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+.formContainer {
+  position: relative;
+  z-index: 2;
+  background: var(--bg1-color);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  font-weight: 500;
+}
+
+input {
+  padding: 0.75rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.forgotPassword {
+  font-size: var(--font-size-small);
+  color: var(--button-color);
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.loginButton {
+  padding: 0.75rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.loginButton:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.loginButton:hover:not(:disabled) {
+  background-color: var(--accent-color-hover);
+}
+
+.error {
+  background: #ffe0e0;
+  color: #b30000;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Styles for the button */
+.buttonLoading {
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* Create the spinner */
+.spinner {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+/* terms */
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-align: left;
+  gap: 5px;
+  flex-direction: row;
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.checkboxLabel a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.checkboxLabel a:hover {
+  text-decoration: underline;
+}
+
+/* Animation for the  spinner */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footerText {
+  margin-top: 1.5rem;
+  color: #555;
+}
+
+.footerText span {
+  color: var(--accent-color);
+  cursor: pointer;
+  /* font-weight: bold; */
+  margin-left: 0.25rem;
+  transition: text-decoration 0.3s;
+}
+
+.footerText span:hover {
+  text-decoration: underline;
+}
